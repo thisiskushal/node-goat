@@ -76,6 +76,8 @@ jobs:
       - name: JFrog audit - SAST 🐸
         run: |
           jf audit --sast --format=sarif --fail false > jfrog_sast.sarif
+          ls -la
+          pwd
       - name: Upload SARIF output to generate autofix
         uses: github/codeql-action/upload-sarif@v4
         with:
