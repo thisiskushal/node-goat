@@ -154,7 +154,7 @@ jobs:
       - name: JFrog build scan 🐸
         run: |
           sleep 60
-          jf build-scan ${{ env.JFROG_CLI_BUILD_NAME }} ${{ env.JFROG_CLI_BUILD_NUMBER }} --project ${{ vars.JF_PROJECT }} --fail false --vuln true
+          jf build-scan --fail=false --vuln=true ${{ env.JFROG_CLI_BUILD_NAME }} ${{ env.JFROG_CLI_BUILD_NUMBER }} --project ${{ vars.JF_PROJECT }}
       - name: JFrog create release bundle 🐸
         run: |
           jf release-bundle-create --spec=rbv2_build_spec.json --spec-vars="build-name=${{ env.JFROG_CLI_BUILD_NAME }};build-number=${{ env.JFROG_CLI_BUILD_NUMBER }};project-key=${{ vars.JF_PROJECT }}" --sync=true --signing-key=${{ secrets.JF_RB_SIGNING_KEY_NAME }} ${{ env.JFROG_CLI_BUILD_NAME }} ${{ env.NPM_PACKAGE_BUILD_VERSION }}
