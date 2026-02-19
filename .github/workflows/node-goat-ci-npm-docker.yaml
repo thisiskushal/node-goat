@@ -140,11 +140,7 @@ jobs:
           jf rt build-add-git ./
           jf rt build-collect-env
       - name: JFrog build publish 🐸
-        run: jf rt build-publish \
-          --build-name ${{ env.JFROG_CLI_BUILD_NAME }} \
-          --build-number ${{ env.JFROG_CLI_BUILD_NUMBER }} \
-          --project ${{ vars.JF_PROJECT }} \
-          --detailed-summary=true
+        run: jf rt build-publish ${{ env.JFROG_CLI_BUILD_NAME }} ${{ env.JFROG_CLI_BUILD_NUMBER }} --project ${{ vars.JF_PROJECT }} --detailed-summary=true
       - name: Sign Build Evidence 🐸
         run: |
           echo '{ "actor": "${{ github.actor }}", "date": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'" }' > sign_build.json
