@@ -93,7 +93,7 @@ jobs:
         run: jfrog npm publish --module npm-build
       - name: Evidence Publish for NPM 🐸
         run: |
-          echo '{ "actor": "${{ github.actor }}", "date": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'" }' > sign_npm.json
+          echo '{ "actor": "${{ github.actor }}", "date": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'", "branch": "${{ github.base_ref }}", "job_id": "${{ github.job }}", "git_repo_name": "${{ github.repository }}", "git_repo_owner": "${{ github.repository_owner }}", "git_commit_hash": "${{ github.SHA }}" }' > sign_npm.json
           jf evd create \
             --package-name ${{ env.NPM_PACKAGE_NAME }} \
             --package-version ${{ env.NPM_PACKAGE_BUILD_VERSION }} \
@@ -127,7 +127,7 @@ jobs:
           JF_URL: ${{ vars.JF_URL }}
       - name: Evidence Publish for Docker 🐳🐸
         run: |
-          echo '{ "actor": "${{ github.actor }}", "date": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'" }' > sign_docker.json
+          echo '{ "actor": "${{ github.actor }}", "date": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'", "branch": "${{ github.base_ref }}", "job_id": "${{ github.job }}", "git_repo_name": "${{ github.repository }}", "git_repo_owner": "${{ github.repository_owner }}", "git_commit_hash": "${{ github.SHA }}" }' > sign_docker.json
           jf evd create \
             --package-name node-goat \
             --package-version ${{ env.NPM_PACKAGE_BUILD_VERSION }} \
