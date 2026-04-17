@@ -15,7 +15,8 @@
     "ejs": "3.1.6",
     "express": "4.18.2",
     "lodash": "4.17.1",
-    "protobufjs": "6.11.2"
+    "protobufjs": "6.11.2",
+    "axios": "0.31.0"
   },
   "registry":"https://soleng.jfrog.io/artifactory/api/npm/kushal-npm-remote/"
 }
